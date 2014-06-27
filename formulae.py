@@ -118,8 +118,12 @@ def resistance_penetration_percent(resistance, reduction):
         return 0
 
 
-def damage_done(damage, resistance, resistance_penetration_flat,
-                resistance_penetration_percent, resistance_reduction_flat,
-                resistance_reduction_percent):
+def scaling_level(scaling):
+    levels = np.arange(1, 19, 1)
+    return levels * scaling
+
+# def damage_done(damage, resistance, resistance_penetration_flat,
+#                 resistance_penetration_percent, resistance_reduction_flat,
+#                 resistance_reduction_percent):
 
 
