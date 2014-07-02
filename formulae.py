@@ -127,3 +127,14 @@ def damage_done(damage, resist, rpenetration_flat,
     tt_resist = resistance_penetration_flat(tt_resist, rpenetration_flat)
     dmg = damage - tt_resist
     return dmg
+
+
+def pulse_abilities(seconds, samples, active, cooldown):
+    saw = lambda t, a: t * a - np.floor(t * a)
+    pulse = lambda t, a, duty: saw(t - a / duty, a) - saw(t, a)
+    frequency = active + cooldown
+    t = np.linspace(0, seconds, samples, endpoint=False)
+    act = pulse(t, 1 / frequency, cooldown / frequency)
+    minx = act.min()
+    maxx = act.max()
+    return act
